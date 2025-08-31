@@ -1,7 +1,10 @@
 class Quote {
 
-  String text;
-  String author;
+  final String text;
+  final String author;
+  final String category;
+  final DateTime createdAt;
+  int likes; 
 
   //  normal constructor, as we've already seen
 
@@ -20,6 +23,6 @@ class Quote {
   // constructor with named parameters
   // & automatically assigns named arguments to class properties
 
-  Quote({ this.text, this.author });
+  Quote({required this.text, required this.author, this.category = 'General', DateTime? createdAt, this.likes = 0, }) : createdAt = createdAt ?? DateTime.now();
 
 }
