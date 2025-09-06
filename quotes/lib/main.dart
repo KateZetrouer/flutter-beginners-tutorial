@@ -7,6 +7,8 @@ void main() => runApp(MaterialApp(
 ));
 
 class QuoteList extends StatefulWidget {
+  const QuoteList({super.key});
+
   @override
   _QuoteListState createState() => _QuoteListState();
 }
@@ -24,12 +26,19 @@ class _QuoteListState extends State<QuoteList> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text('Awesome Quotes'),
+        title: const Text('Awesome Quotes'),
         centerTitle: true,
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          delete: () {
+            setState(() {
+              quotes.remove(quote);
+            });
+          }
+        )).toList(),
       ),
     );
   }

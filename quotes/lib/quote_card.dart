@@ -5,7 +5,8 @@ import 'package:intl/intl.dart';
 class QuoteCard extends StatefulWidget {
 
   final Quote quote;
-  QuoteCard({ required this.quote });
+  final VoidCallback delete;
+  const QuoteCard({super.key,  required this.quote, required this.delete });
 
   @override
   State<QuoteCard> createState() => _QuoteCardState();
@@ -28,7 +29,7 @@ class _QuoteCardState extends State<QuoteCard> {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 6.0),
+              const SizedBox(height: 6.0),
               Text(
                 widget.quote.author,
                 style: TextStyle(
@@ -64,6 +65,12 @@ class _QuoteCardState extends State<QuoteCard> {
                   ),
                 ],
               ),
+              SizedBox(height: 8.0),
+              ElevatedButton.icon(
+                onPressed: widget.delete,
+                label: Text('Delete Quote'),
+                icon: Icon(Icons.delete),
+              )
           ],
         ),
       )
