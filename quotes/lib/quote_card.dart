@@ -12,10 +12,21 @@ class QuoteCard extends StatefulWidget {
   State<QuoteCard> createState() => _QuoteCardState();
 }
 
+final Map<String, Color> backingColor = {
+  'inspiration' : Colors.blueAccent.shade100,
+  'humor': Colors.amber.shade100,
+  'general': Colors.grey.shade100,
+};
+
+Color cardColor(String c) {
+  return backingColor[c.toLowerCase()] ?? Colors.grey.shade100;
+}
+
 class _QuoteCardState extends State<QuoteCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        color: cardColor(widget.quote.category),
         margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),

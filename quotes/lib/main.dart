@@ -16,7 +16,7 @@ class QuoteList extends StatefulWidget {
 class _QuoteListState extends State<QuoteList> {
 
   List<Quote> quotes = [
-    Quote(author: 'Oscar Wilde', text: 'Be yourself; everyone else is already taken'),
+    Quote(author: 'Oscar Wilde', text: 'Be yourself; everyone else is already taken', category: 'Inspiration'),
     Quote(author: 'Oscar Wilde', text: 'I have nothing to declare except my genius'),
     Quote(author: 'Oscar Wilde', text: 'The truth is rarely pure and never simple')
   ];
