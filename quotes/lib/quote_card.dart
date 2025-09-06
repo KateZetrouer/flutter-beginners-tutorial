@@ -67,7 +67,29 @@ class _QuoteCardState extends State<QuoteCard> {
               ),
               SizedBox(height: 8.0),
               ElevatedButton.icon(
-                onPressed: widget.delete,
+                onPressed: () async {
+                  final ok = await showDialog<bool>(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: const Text('Delete quote?'),
+                      content: const Text('This cannot be undone.'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: const Text('Cancel'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          child: const Text('Delete')
+                        ),
+                      ],
+                    ),
+                  ) ?? false;
+
+                  if (ok) {
+                    widget.delete();
+                  }
+                },
                 label: Text('Delete Quote'),
                 icon: Icon(Icons.delete),
               )
